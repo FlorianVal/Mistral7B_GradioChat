@@ -11,10 +11,10 @@ This repository contains a Gradio chatbot application using the OpenAI API.
 To build the Docker container, run the following command in the terminal:
 
 ```bash
-docker build --build-arg OPENAI_API_URL=<your_openai_api_url> --build-arg OPENAI_API_KEY=<your_openai_api_key> --build-arg OPENAI_MODEL=<your_openai_model> -t gradio_chatbot .
+docker build --build-arg API_URL=<your_API_URL> --build-arg MODEL=<your_MODEL> -t gradio_chatbot .
 ```
 
-Replace `<your_openai_api_url>`, `<your_openai_api_key>`, and `<your_openai_model>` with your OpenAI API URL, API key, and the model you want to use, respectively.
+Replace `<your_API_URL>` and `<your_MODEL>` with your OpenAI API URL, API key, and the model you want to use, respectively.
 
 ## Running the Docker container
 
@@ -28,11 +28,19 @@ The Gradio chatbot interface will be accessible at http://localhost:7860.
 
 ## Running the application using Docker Compose
 
-Before running the containers using Docker Compose, make sure you have set the environment variables OPENAI_API_KEY, OPENAI_MODEL, and HF_TOKEN. You can set them in a .env file or export them in your shell.
+Before running the containers using Docker Compose, make sure you have set the environment variables MODEL and HF_TOKEN. You can set them in a .env file or export them in your shell.
 
 To build and run the containers using Docker Compose, execute the following command:
 
 ```bash
+docker-compose up
+```
+
+Full example :
+    
+```bash
+export MODEL="mistralai/Mistral-7B-Instruct-v0.1" 
+export HF_TOKEN="YOUR_API_KEY"
 docker-compose up
 ```
 
