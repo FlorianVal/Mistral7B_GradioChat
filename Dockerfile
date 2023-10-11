@@ -1,0 +1,18 @@
+FROM python:3.9
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+COPY . .
+
+ARG OPENAI_API_URL
+ARG OPENAI_API_KEY
+ARG OPENAI_MODEL
+
+ENV OPENAI_API_URL=$OPENAI_API_URL
+ENV OPENAI_API_KEY=$OPENAI_API_KEY
+ENV OPENAI_MODEL=$OPENAI_MODEL
+
+CMD ["python", "app.py"]

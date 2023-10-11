@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  gradio_chatbot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        OPENAI_API_URL: "http://model:8000"
+        OPENAI_API_KEY: "${OPENAI_API_KEY}"
+        OPENAI_MODEL: "${OPENAI_MODEL}"
+    ports:
+      - "7860:7860"
+    links:
+      - model
+
+  model:
+    image: ghcr.io/mistralai/mistral-src/vllm:latest
+    environment:
+      HF_TOKEN: "${HF_TOKEN}"
+    command: ["--host", "0.0.0.0", "--model", "mistralai/Mistral-7B-v0.1"]
