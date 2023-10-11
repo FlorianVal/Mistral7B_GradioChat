@@ -3,6 +3,7 @@ import openai
 from config import API_URL, MODEL
 
 openai.api_base = API_URL
+openai.api_key = "None"
 
 
 def chatbot(message, history):
