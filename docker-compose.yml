@@ -18,7 +18,7 @@ services:
     image: ghcr.io/mistralai/mistral-src/vllm:latest
     environment:
       HF_TOKEN: "${HF_TOKEN}"
-    command: ["--host", "0.0.0.0", "--model", "mistralai/Mistral-7B-v0.1"]
+    command: ["--host", "0.0.0.0", "--model", "mistralai/Mistral-7B-v0.1", "--dtype", "half"] # Change to Bfloat16 if newer GPU
     deploy:
       resources:
         reservations:

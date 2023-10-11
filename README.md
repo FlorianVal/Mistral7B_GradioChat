@@ -37,3 +37,5 @@ docker-compose up
 ```
 
 The Gradio chatbot interface will be accessible at http://localhost:7860. The Mistral-7B model will be running in a separate container and will communicate with the Gradio chatbot interface internally.
+
+If your GPU has CUDA capabilities below 8.0, you will see the error ValueError: Bfloat16 is only supported on GPUs with compute capability of at least 8.0. Your XXX GPU has compute capability 7.0. You need to pass the parameter --dtype half to the Docker command line.
