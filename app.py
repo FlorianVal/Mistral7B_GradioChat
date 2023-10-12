@@ -16,13 +16,20 @@ def chatbot(message, history):
     response = openai.ChatCompletion.create(
         model=MODEL,
         messages=messages,
+        stream=True,
     )
-    return response.choices[0].message.content.strip()
+    message_content = ""
+    for chunk in response:
+        if "content" in chunk.choices[0].delta.keys():
+            message_content += chunk.choices[0].delta.content
+            yield message_content
 
 
-iface = gr.ChatInterface(
-    fn=chatbot,
-    title="Chatbot",
-).launch(
-    server_name="0.0.0.0"
+iface = (
+    gr.ChatInterface(
+        fn=chatbot,
+        title="Chatbot",
+    )
+    .queue()
+    .launch(server_name="0.0.0.0")
 )  # 0.0.0.0 is for docker purposes
