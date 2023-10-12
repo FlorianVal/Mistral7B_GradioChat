@@ -1,6 +1,6 @@
-# Gradio Chatbot with OpenAI API
+# Gradio Chatbot with Mistral 7B
 
-This repository contains a Gradio chatbot application using the OpenAI API.
+This repository contains a Gradio chatbot application using the OpenAI API. The docker-compose contains the Gradio chatbot container and a vLLM container to use mistral 7B as backend for the chatbot.
 
 ## Prerequisites
 
@@ -20,6 +20,8 @@ Replace `<your_API_URL>` and `<your_MODEL>` with your OpenAI API URL, API key, a
 
 To run the Docker container, use the following command:
 
+This runs only the gradio container. To have a LLM plugged behind refer to the Docker Compose.
+
 ```bash
 docker run -p 7860:7860 gradio_chatbot
 ```
@@ -28,7 +30,8 @@ The Gradio chatbot interface will be accessible at http://localhost:7860.
 
 ## Running the application using Docker Compose
 
-Before running the containers using Docker Compose, make sure you have set the environment variables MODEL and HF_TOKEN. You can set them in a .env file or export them in your shell.
+Before running the containers using Docker Compose, make sure you have set the environment variables MODEL and HF_TOKEN. You can set them in a .env file or export them in your shell. API_URL is not required no more as it will be plugged to the vLLM container.
+HF_TOKEN is required in order to download models from Hugging Face.
 
 To build and run the containers using Docker Compose, execute the following command:
 
