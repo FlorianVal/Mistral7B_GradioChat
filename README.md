@@ -1,5 +1,7 @@
 # Gradio Chatbot with Mistral 7B
 
+![Gradio Chatbot with Mistral 7B](./assets/Readme_image.png)
+
 This repository contains a Gradio chatbot application using the OpenAI API. The docker-compose contains the Gradio chatbot container and a vLLM container to use mistral 7B as backend for the chatbot.
 
 ## Prerequisites
