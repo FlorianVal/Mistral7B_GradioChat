@@ -19,6 +19,8 @@ services:
       HF_TOKEN: "${HF_TOKEN}"
       MODEL: "${MODEL}"
     command: ["--host", "0.0.0.0", "--model", "${MODEL}", "--dtype", "half"] # Change to Bfloat16 if newer GPU
+    volumes:
+      - "./model/huggingface:/root/.cache/huggingface"
     deploy:
       resources:
         reservations:
